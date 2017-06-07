@@ -15,16 +15,16 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view, typically from a nib.
 		
 		let view = UIScrollView(frame: self.view.bounds)
-		view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+		view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 		view.contentSize = .zero
 		
-		UIFont.familyNames().forEach { (familyName) in
-			let fontsInFamily = UIFont.fontNamesForFamilyName(familyName)
+		UIFont.familyNames.forEach { (familyName) in
+			let fontsInFamily = UIFont.fontNames(forFamilyName: familyName)
 			fontsInFamily.forEach({ (fontName) in
 				print(fontName)
 				let label = UILabel()
 				label.text = "フォント：" + fontName
-				label.font = UIFont(name: fontName, size: UIFont.labelFontSize())
+				label.font = UIFont(name: fontName, size: UIFont.labelFontSize)
 				label.sizeToFit()
 				label.frame.origin.y = view.contentSize.height
 				view.contentSize.width = max(view.contentSize.width, label.frame.width)
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 	
-	override func prefersStatusBarHidden() -> Bool {
+	override var prefersStatusBarHidden : Bool {
 		return true
 	}
 
